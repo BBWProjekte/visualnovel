@@ -43,9 +43,6 @@ public class GameView extends JFrame {
     private ImageIcon icon;
     private JLabel label;
 
-    //Frames
-    private JFrame newGame = new JFrame();
-
     //Layouts
     private GridLayout buttonLayout = new GridLayout(5, 1, 0, 0);
 
@@ -66,7 +63,7 @@ public class GameView extends JFrame {
      */
     private void initForm() {
         //Initializing the window
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(buttonLayout);
         this.setBounds(200, 200, 250, 250);
         this.setResizable(false);
@@ -80,13 +77,15 @@ public class GameView extends JFrame {
 
         //Listeners
         startButton.addActionListener(new ActionListener() {
-            /**
-             * Calls the openGameWindow method
-             *
-             * @param e the ActionEvent
-             */
             public void actionPerformed(ActionEvent e) {
-                openGameWindow(e);
+                Game game = new Game();
+                game.setVisible(true);
+            }
+        });
+        creditButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                Credits credits = new Credits();
+                credits.setVisible(true);
             }
         });
         leaveGameButton.addActionListener(new CloseListener());
@@ -103,16 +102,5 @@ public class GameView extends JFrame {
     /**
      * Resets the window
      */
-    public void resetView() {
-    }
-
-    /**
-     * Opens the actual game window after the button has been clicked
-     *
-     * @param e the ActionEvent
-     */
-    public void openGameWindow(ActionEvent e) {
-        System.exit(0);
-    }
-
+    public void resetView() {}
 }
