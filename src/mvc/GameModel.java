@@ -12,4 +12,20 @@ package mvc;
  * @author janes.thomas
  */
 public class GameModel {
+    
+    private int wrongAnswers;
+
+    /**
+     * @return the wrongAnswers
+     */
+    public int getWrongAnswers() {
+        return wrongAnswers;
+    }
+
+    /**
+     * @param wrongAnswers the wrongAnswers to set
+     */
+    public void setWrongAnswers(int wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
+    }
 }

@@ -2,6 +2,7 @@ package ownclasses;
 
 
 import java.awt.FlowLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /*
@@ -14,6 +15,11 @@ import javax.swing.JFrame;
  * @author janes.thomas
  */
 public class Game extends JFrame{
+    
+    JButton characterOne = new JButton("Charakter 1");
+    JButton characterTwo = new JButton("Charakter 2");
+    JButton characterThree = new JButton("Charakter 3");
+    JButton characterFour = new JButton("Charakter 4");
 
     public Game(){
         super("The Game");
@@ -26,5 +32,10 @@ public class Game extends JFrame{
         this.setLayout(new FlowLayout());
         this.setBounds(200, 200, 250, 250);
         this.setResizable(false);
+        
+        this.add(characterOne);
+        this.add(characterTwo);
+        this.add(characterThree);
+        this.add(characterFour);
     }
 }
