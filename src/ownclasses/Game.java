@@ -1,3 +1,5 @@
+package ownclasses;
+
 
 import java.awt.FlowLayout;
 import javax.swing.JFrame;

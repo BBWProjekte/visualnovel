@@ -1,3 +1,5 @@
+package listener;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +13,7 @@ import java.awt.event.ActionListener;
  *
  * @author janes.thomas
  */
-class CloseListener implements ActionListener {
+public class CloseListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
