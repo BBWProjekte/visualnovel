@@ -30,7 +30,7 @@ public class Game extends JFrame{
     public void setUp(){
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new FlowLayout());
-        this.setBounds(200, 200, 250, 250);
+        this.setBounds(200, 200, 500, 500);
         this.setResizable(false);
         
         this.add(characterOne);

@@ -25,7 +25,7 @@ public class Credits extends JFrame {
     JLabel creditSixLabel = new JLabel("Concept Art: Google");
     JLabel creditSevenLabel = new JLabel("Character Design: Google");
     JLabel creditEightLabel = new JLabel("Pre-Coding: Grey");
-    JLabel creditNineLabel = new JLabel("Does not last long in bed: every nerd");
+    JLabel creditNineLabel = new JLabel("Does not last long in bed: Patrick");
     JLabel creditTenLabel = new JLabel("Thank you.");
     
     
