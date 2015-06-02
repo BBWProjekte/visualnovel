@@ -1,4 +1,4 @@
-package ownclasses;
+package view;
 
 
 import java.awt.FlowLayout;
@@ -16,10 +16,17 @@ import javax.swing.JFrame;
  */
 public class Game extends JFrame{
     
+    //Visible components
     JButton characterOne = new JButton("Charakter 1");
     JButton characterTwo = new JButton("Charakter 2");
     JButton characterThree = new JButton("Charakter 3");
     JButton characterFour = new JButton("Charakter 4");
+    
+    //Other kind of variables
+    private boolean IsCharacterOne = false;
+    private boolean IsCharacterTwo = false;
+    private boolean IsCharacterThree = false;
+    private boolean IsCharacterFour = false;
 
     public Game(){
         super("The Game");

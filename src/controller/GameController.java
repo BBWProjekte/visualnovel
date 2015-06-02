@@ -1,4 +1,4 @@
-package mvc;
+package controller;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,6 +9,8 @@ package mvc;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.GameModel;
+import view.GameView;
 
 /**
  *

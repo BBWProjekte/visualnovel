@@ -1,4 +1,4 @@
-package ownclasses;
+package view;
 
 
 import java.awt.FlowLayout;
