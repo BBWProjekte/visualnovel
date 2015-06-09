@@ -5,10 +5,8 @@ package view;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import controller.GameController;
-import view.Credits;
-import view.Game;
 import controller.CloseListener;
+import controller.GameController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,13 +15,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.Credits;
+import view.Game;
 
 /**
  *
@@ -52,6 +59,12 @@ public class MainMenu extends JFrame {
     //Layouts
     private GridLayout buttonLayout = new GridLayout(5, 1, 0, 0);
 
+    //
+    private boolean isTheMusicPlaying = false;
+    
+    AudioInputStream audioInputStream;
+    Clip clip;
+
     public MainMenu() {
         super("VisualNovel");
 
@@ -72,6 +85,8 @@ public class MainMenu extends JFrame {
         this.setLayout(buttonLayout);
         this.setBounds(200, 200, 250, 250);
         this.setResizable(false);
+        startBackGroundMusic();
+
         try {
             img = ImageIO.read(image);
             icon = new ImageIcon(img);
@@ -88,13 +103,19 @@ public class MainMenu extends JFrame {
             }
         });
         creditButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 Credits credits = new Credits();
                 credits.setVisible(true);
             }
         });
         leaveGameButton.addActionListener(new CloseListener());
-
+        
+        optionButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                stopBackGroundMusic();
+            }
+        });
+                
         //Adding components to window
         this.add(startButton);
         this.add(optionButton);
@@ -104,8 +125,44 @@ public class MainMenu extends JFrame {
 
     }
 
+    public void startBackGroundMusic() {
+        String soundName = "song.wav";
+        if (isTheMusicPlaying == false) {
+            try {
+                audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                setIsTheMusicPlaying(true);
+                clip.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    
+    public void stopBackGroundMusic(){
+        setIsTheMusicPlaying(false);
+        clip.stop();
+    }
+
     /**
      * Resets the window
      */
-    public void resetView() {}
+    public void resetView() {
+    }
+
+    /**
+     * @return the isTheMusicPlaying
+     */
+    public boolean isIsTheMusicPlaying() {
+        return isTheMusicPlaying;
+    }
+
+    /**
+     * @param isTheMusicPlaying the isTheMusicPlaying to set
+     */
+    public void setIsTheMusicPlaying(boolean isTheMusicPlaying) {
+        this.isTheMusicPlaying = isTheMusicPlaying;
+    }
 }
