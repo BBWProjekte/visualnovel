@@ -29,7 +29,7 @@ import javax.swing.JTextField;
  *
  * @author janes.thomas
  */
-public class GameView extends JFrame {
+public class MainMenu extends JFrame {
 
     //Classes
     static GameController controller;
@@ -52,7 +52,7 @@ public class GameView extends JFrame {
     //Layouts
     private GridLayout buttonLayout = new GridLayout(5, 1, 0, 0);
 
-    public GameView() {
+    public MainMenu() {
         super("VisualNovel");
 
         initForm();
@@ -60,7 +60,6 @@ public class GameView extends JFrame {
 
     public static void main(String[] args) {
         controller = new GameController();
-
         controller.showView();
     }
 

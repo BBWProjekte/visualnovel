@@ -1,7 +1,9 @@
 package view;
 
-
+import controller.GameController;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -14,35 +16,40 @@ import javax.swing.JFrame;
  *
  * @author janes.thomas
  */
-public class Game extends JFrame{
-    
+public class Game extends JFrame {
+
+    //Classes
+    private GameController controller = new GameController();
+
     //Visible components
     JButton characterOne = new JButton("Charakter 1");
     JButton characterTwo = new JButton("Charakter 2");
     JButton characterThree = new JButton("Charakter 3");
     JButton characterFour = new JButton("Charakter 4");
-    
-    //Other kind of variables
-    private boolean IsCharacterOne = false;
-    private boolean IsCharacterTwo = false;
-    private boolean IsCharacterThree = false;
-    private boolean IsCharacterFour = false;
 
-    public Game(){
+    public Game() {
         super("The Game");
-        
+
         setUp();
     }
-    
-    public void setUp(){
+
+    public void setUp() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new FlowLayout());
         this.setBounds(200, 200, 500, 500);
         this.setResizable(false);
-        
+
         this.add(characterOne);
         this.add(characterTwo);
         this.add(characterThree);
         this.add(characterFour);
+
+        //Listeners
+        characterOne.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.doChooseOne();
+            }
+        });
     }
 }

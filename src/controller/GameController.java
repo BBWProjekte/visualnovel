@@ -10,7 +10,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.GameModel;
-import view.GameView;
+import view.MainMenu;
 
 /**
  *
@@ -18,12 +18,12 @@ import view.GameView;
  */
 public class GameController {
  
-    private GameView _view;
+    private MainMenu _view;
     private GameModel _model;
 
     public GameController(){
         this._model = new GameModel();
-        this._view = new GameView();
+        this._view = new MainMenu();
 
         addListener();
     }
@@ -36,5 +36,16 @@ public class GameController {
      * uns (dem Controller) kommunizieren kann
      */
     private void addListener(){
+    }
+    
+    public void doChooseOne(){
+        _model.setIsCharacterOne(true);
+        
+        //tests
+        System.out.println(_model.isIsCharacterOne());
+        System.out.println(_model.isIsCharacterTwo());
+        System.out.println(_model.isIsCharacterThree());
+        System.out.println(_model.isIsCharacterFour());
+
     }
 }
