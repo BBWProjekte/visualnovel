@@ -48,7 +48,8 @@ public class Game extends JFrame {
         characterOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.doChooseOne();
+                Ingame game1 = new Ingame();
+                game1.setVisible(true);
             }
         });
     }
