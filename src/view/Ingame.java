@@ -43,19 +43,21 @@ public class Ingame extends JFrame{
         this.setLayout(gameLayout);
         this.setBounds(200, 200, 500, 500);
         this.setResizable(false);
-        
-        textPanel = new JPanel();
-        textPanel.setLayout(new FlowLayout());
-        
+               
         gamePanel = new JPanel();
         gamePanel.setLayout(new FlowLayout());
         
-        this.add(textPanel);
+        textPanel = new JPanel();
+        textPanel.setLayout(new FlowLayout());
+        textPanel.add(ausgabeText);
+        textPanel.add(weiterButton);
+        
+        this.add(gamePanel);
         this.add(textPanel);
         
     }
     
-    /* public void setUpGridBag() {
+    /*public void setUpGridBag() {
         JPanel panel = new JPanel();
         panel.setBackground(Color.DARK_GRAY);
         panel.setSize(50,50);
@@ -78,7 +80,7 @@ public class Ingame extends JFrame{
         textPanel.add(panel);
         
         this.setVisible(true);
-    } */
+    }*/ 
     
     
 }
