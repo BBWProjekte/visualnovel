@@ -7,36 +7,26 @@ package view;
  */
 import controller.CloseListener;
 import controller.GameController;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import view.Credits;
-import view.Game;
 
 /**
  *
  * @author janes.thomas
  */
-public class MainMenu extends JFrame {
+public class MainMenu extends JFrame implements ActionListener {
 
     //Classes
     static GameController controller;
@@ -60,8 +50,8 @@ public class MainMenu extends JFrame {
     private GridLayout buttonLayout = new GridLayout(5, 1, 0, 0);
 
     //
-    private boolean isTheMusicPlaying = false;
-    
+    private boolean isMusicMuted = true;
+
     AudioInputStream audioInputStream;
     Clip clip;
 
@@ -109,13 +99,9 @@ public class MainMenu extends JFrame {
             }
         });
         leaveGameButton.addActionListener(new CloseListener());
-        
-        optionButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                stopBackGroundMusic();
-            }
-        });
-                
+
+        optionButton.addActionListener(this);
+
         //Adding components to window
         this.add(startButton);
         this.add(optionButton);
@@ -127,22 +113,20 @@ public class MainMenu extends JFrame {
 
     public void startBackGroundMusic() {
         String soundName = "song.wav";
-        if (isTheMusicPlaying == false) {
+        if (isMusicMuted == true) {
             try {
                 audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
-                setIsTheMusicPlaying(true);
                 clip.start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
     }
-    
-    public void stopBackGroundMusic(){
-        setIsTheMusicPlaying(false);
+
+    public void stopBackGroundMusic() {
+        setShouldTheMusicPlay(false);
         clip.stop();
     }
 
@@ -155,14 +139,22 @@ public class MainMenu extends JFrame {
     /**
      * @return the isTheMusicPlaying
      */
-    public boolean isIsTheMusicPlaying() {
-        return isTheMusicPlaying;
+    public boolean isShouldTheMusicPlay() {
+        return isMusicMuted;
     }
 
     /**
      * @param isTheMusicPlaying the isTheMusicPlaying to set
      */
-    public void setIsTheMusicPlaying(boolean isTheMusicPlaying) {
-        this.isTheMusicPlaying = isTheMusicPlaying;
+    public void setShouldTheMusicPlay(boolean shouldTheMusicPlay) {
+        this.isMusicMuted = shouldTheMusicPlay;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        dispose();
+        stopBackGroundMusic();
+        Options options = new Options(this);
+        options.setVisible(true);
     }
 }

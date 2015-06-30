@@ -18,8 +18,6 @@ import javax.swing.JFrame;
  */
 public class Game extends JFrame {
 
-    //Classes
-    private GameController controller = new GameController();
 
     //Visible components
     JButton characterOne = new JButton("Charakter 1");
@@ -29,7 +27,6 @@ public class Game extends JFrame {
 
     public Game() {
         super("The Game");
-
         setUp();
     }
 
@@ -48,9 +45,36 @@ public class Game extends JFrame {
         characterOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Ingame game1 = new Ingame();
-                game1.setVisible(true);
+                dispose();
+                GameCharacterOne char1 = new GameCharacterOne();
+                char1.setVisible(true);
             }
         });
+        characterTwo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                GameCharacterOne char1 = new GameCharacterOne();
+                char1.setVisible(true);
+            }
+        });
+        characterThree.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                GameCharacterOne char1 = new GameCharacterOne();
+                char1.setVisible(true);
+            }
+        });
+        characterFour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                GameCharacterOne char1 = new GameCharacterOne();
+                char1.setVisible(true);
+            }
+        });
+        
+        
     }
 }

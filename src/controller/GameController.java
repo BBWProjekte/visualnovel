@@ -48,4 +48,6 @@ public class GameController {
         System.out.println(_model.isIsCharacterFour());
 
     }
+    
+    
 }
