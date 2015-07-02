@@ -6,7 +6,8 @@
 package view;
 
 import controller.GameController;
-import controller.ImagePanel;
+import controller.CharacterOnePanel;
+import exception.PhotoReadException;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -29,25 +30,25 @@ import javax.swing.JTextPane;
  */
 public class GameCharacterOne extends JFrame {
 
-    private GameController controller = new GameController();
-
-    JButton weiterButton = new JButton("Continue");
-    JLabel ausgabeText = new JLabel("<html>Hey, I am a tutorial character. This is going to be easy.<br><br>Click 'Continue to kill me'.</html>");
-    ImagePanel imagePanel = new ImagePanel();
-    JPanel gamePanel = new JPanel();
-    private GridLayout gameLayout = new GridLayout(2, 1, 0, 0);
-    private int storyCounter = 0;
-
     //Images
-    private static final String IMG_PATH = "src/images/charOne_happy.gif";
+    private static final String IMG_PATH = "src/images/charOne/charOne_happy.gif";
     private BufferedImage img;
-
-    //Files
     private File image = new File(IMG_PATH);
 
+    //Components
     private ImageIcon icon;
     private JLabel label;
+    private JButton weiterButton = new JButton("Continue");
+    private JLabel ausgabeText = new JLabel("<html>Hey, I am a tutorial character. This is going to be easy.<br><br>Click 'Continue' to kill me.</html>");
 
+    //Layouts
+    private CharacterOnePanel imagePanel = new CharacterOnePanel();
+    private JPanel gamePanel = new JPanel();
+    private GridLayout gameLayout = new GridLayout(2, 1, 0, 0);
+
+    //div
+    private int storyCounter = 0;   
+    
     public GameCharacterOne() {
         super("In Game");
 
@@ -64,7 +65,7 @@ public class GameCharacterOne extends JFrame {
             img = ImageIO.read(image);
             icon = new ImageIcon(img);
             label = new JLabel(icon);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -76,7 +77,7 @@ public class GameCharacterOne extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (storyCounter == 0) {
                     try {
-                        img = ImageIO.read(new File("src/images/charOne_dead.gif"));
+                        img = ImageIO.read(new File("src/images/charOne/charOne_dead.gif"));
                         icon = new ImageIcon(img);
                     } catch (IOException ex) {
                         ex.printStackTrace();

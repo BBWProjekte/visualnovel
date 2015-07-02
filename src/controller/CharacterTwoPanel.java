@@ -9,14 +9,14 @@ import java.awt.Paint;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class ImagePanel extends JPanel {
+public class CharacterTwoPanel extends JPanel {
     /**
      * 
      */
      private static final long serialVersionUID = 1L;
      private static final Color BACKGROUND      = Color.black;
      private static final Color BACKGROUND_2    = Color.WHITE;
-     String path="/images/backOne.jpg";
+     String path="/images/charTwo/backTwo.jpg";
 
     @Override
     protected void paintComponent(Graphics g) {

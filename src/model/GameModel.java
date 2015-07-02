@@ -13,85 +13,20 @@ package model;
  */
 public class GameModel {
     
-    private int wrongAnswers;
-    
     //Other kind of variables
-    private boolean IsCharacterOne = false;
-    private boolean IsCharacterTwo = false;
-    private boolean IsCharacterThree = false;
-    private boolean IsCharacterFour = false;
-    
-    
-    
-    
+    private boolean soundBoolean = true;
 
     /**
-     * @return the wrongAnswers
+     * @return the soundBoolean
      */
-    public int getWrongAnswers() {
-        return wrongAnswers;
+    public boolean isSoundBoolean() {
+        return soundBoolean;
     }
 
     /**
-     * @param wrongAnswers the wrongAnswers to set
+     * @param soundBoolean the soundBoolean to set
      */
-    public void setWrongAnswers(int wrongAnswers) {
-        this.wrongAnswers = wrongAnswers;
-    }
-
-    /**
-     * @return the IsCharacterOne
-     */
-    public boolean isIsCharacterOne() {
-        return IsCharacterOne;
-    }
-
-    /**
-     * @param IsCharacterOne the IsCharacterOne to set
-     */
-    public void setIsCharacterOne(boolean IsCharacterOne) {
-        this.IsCharacterOne = IsCharacterOne;
-    }
-
-    /**
-     * @return the IsCharacterTwo
-     */
-    public boolean isIsCharacterTwo() {
-        return IsCharacterTwo;
-    }
-
-    /**
-     * @param IsCharacterTwo the IsCharacterTwo to set
-     */
-    public void setIsCharacterTwo(boolean IsCharacterTwo) {
-        this.IsCharacterTwo = IsCharacterTwo;
-    }
-
-    /**
-     * @return the IsCharacterThree
-     */
-    public boolean isIsCharacterThree() {
-        return IsCharacterThree;
-    }
-
-    /**
-     * @param IsCharacterThree the IsCharacterThree to set
-     */
-    public void setIsCharacterThree(boolean IsCharacterThree) {
-        this.IsCharacterThree = IsCharacterThree;
-    }
-
-    /**
-     * @return the IsCharacterFour
-     */
-    public boolean isIsCharacterFour() {
-        return IsCharacterFour;
-    }
-
-    /**
-     * @param IsCharacterFour the IsCharacterFour to set
-     */
-    public void setIsCharacterFour(boolean IsCharacterFour) {
-        this.IsCharacterFour = IsCharacterFour;
+    public void setSoundBoolean(boolean soundBoolean) {
+        this.soundBoolean = soundBoolean;
     }
 }

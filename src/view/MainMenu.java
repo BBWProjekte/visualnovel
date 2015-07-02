@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import model.GameModel;
 
 /**
  *
@@ -30,15 +31,14 @@ public class MainMenu extends JFrame implements ActionListener {
 
     //Classes
     static GameController controller;
+    private GameModel gm = new GameModel();
 
     //Images
     private static final String IMG_PATH = "src/images/photo.png";
     private BufferedImage img;
-
-    //Files
     private File image = new File(IMG_PATH);
 
-    //Visible components
+    //Components
     private JButton startButton = new JButton("Start the Game");
     private JButton optionButton = new JButton("Options");
     private JButton creditButton = new JButton("Credits");
@@ -48,10 +48,8 @@ public class MainMenu extends JFrame implements ActionListener {
 
     //Layouts
     private GridLayout buttonLayout = new GridLayout(5, 1, 0, 0);
-
-    //
-    private boolean isMusicMuted = true;
-
+    
+    //Music
     AudioInputStream audioInputStream;
     Clip clip;
 
@@ -113,7 +111,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
     public void startBackGroundMusic() {
         String soundName = "song.wav";
-        if (isMusicMuted == true) {
+        if (gm.isSoundBoolean() == true) {
             try {
                 audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
                 clip = AudioSystem.getClip();
@@ -126,7 +124,7 @@ public class MainMenu extends JFrame implements ActionListener {
     }
 
     public void stopBackGroundMusic() {
-        setShouldTheMusicPlay(false);
+        gm.setSoundBoolean(false);
         clip.stop();
     }
 
@@ -136,25 +134,11 @@ public class MainMenu extends JFrame implements ActionListener {
     public void resetView() {
     }
 
-    /**
-     * @return the isTheMusicPlaying
-     */
-    public boolean isShouldTheMusicPlay() {
-        return isMusicMuted;
-    }
-
-    /**
-     * @param isTheMusicPlaying the isTheMusicPlaying to set
-     */
-    public void setShouldTheMusicPlay(boolean shouldTheMusicPlay) {
-        this.isMusicMuted = shouldTheMusicPlay;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
         stopBackGroundMusic();
-        Options options = new Options(this);
+        Options options = new Options(this,gm);
         options.setVisible(true);
     }
 }

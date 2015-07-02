@@ -38,16 +38,5 @@ public class GameController {
     private void addListener(){
     }
     
-    public void doChooseOne(){
-        _model.setIsCharacterOne(true);
-        
-        //tests
-        System.out.println(_model.isIsCharacterOne());
-        System.out.println(_model.isIsCharacterTwo());
-        System.out.println(_model.isIsCharacterThree());
-        System.out.println(_model.isIsCharacterFour());
-
-    }
-    
     
 }

@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import model.GameModel;
 
 /**
  *
@@ -24,19 +25,25 @@ import javax.swing.event.ChangeListener;
  */
 public class Options extends JFrame {
 
-    JCheckBox soundOn = new JCheckBox("Check this to restart music.");
-    JButton saveButton = new JButton("SAVE");
-    JLabel musicText = new JLabel("<html>WARNING!!<br>Due technical difficulties has the music been turned off.<br>Please select the checkbox if you want to restart it.<br>Otherwise just click save.</html>");
-    
-    private boolean checked = false;
+    //Classes
     private  MainMenu menu;
+    private GameModel gm;
     
+    //Components
+    private JCheckBox soundOn = new JCheckBox("Check to disable / keep it disabled.");
+    private JButton saveButton = new JButton("SAVE");
+    private JLabel musicText = new JLabel("<html>Check the box to disable the music.<br>If it already is disabled, check it to keep it that way.<br><strong>Warning: Music will start if you don't check the box.</strong></html>");
+
     //Layouts
     private GridLayout creditLayout = new GridLayout(5, 2, 0, 0);
     
-    public Options( MainMenu menu){
+    //div
+    private boolean checked = false;
+    
+    public Options( MainMenu menu, GameModel gm){
         super("Options");
         this.menu=menu;
+        this.gm = gm;
         setUp();
     }
     
@@ -53,7 +60,7 @@ public class Options extends JFrame {
                 menu.stopBackGroundMusic();
                
                 }else{
-                    menu.setShouldTheMusicPlay(true);
+                    gm.setSoundBoolean(true);
                    menu.startBackGroundMusic();
                   
                 }
