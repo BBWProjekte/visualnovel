@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import model.GameModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +21,8 @@ import javax.swing.JPanel;
  */
 public class Game extends JFrame {
 
+    //Classes
+    private GameModel gm;
 
     //Components
     JButton characterOne = new JButton("Charakter 1");
@@ -30,15 +33,17 @@ public class Game extends JFrame {
     //Layouts
     JPanel buttonPanel = new JPanel();
 
-    public Game() {
+    public Game(GameModel gm) {
         super("The Game");
+        
+        this.gm = gm;
         setUp();
     }
 
     public void setUp() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new GridLayout(2,1,0,0));
-        this.setBounds(200, 200, 500, 500);
+        this.setBounds(200, 200, 500, 200);
         this.setResizable(false);
 
         buttonPanel.setLayout(new FlowLayout());
@@ -48,7 +53,7 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                GameCharacterOne char1 = new GameCharacterOne();
+                GameCharacterOne char1 = new GameCharacterOne(gm);
                 char1.setVisible(true);
             }
         });
@@ -56,7 +61,7 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                GameCharacterTwo char2 = new GameCharacterTwo();
+                GameCharacterTwo char2 = new GameCharacterTwo(gm);
                 char2.setVisible(true);
             }
         });
@@ -64,16 +69,16 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                GameCharacterOne char1 = new GameCharacterOne();
-                char1.setVisible(true);
+                GameCharacterThree char3 = new GameCharacterThree(gm);
+                char3.setVisible(true);
             }
         });
         characterFour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                GameCharacterOne char1 = new GameCharacterOne();
-                char1.setVisible(true);
+                GameCharacterFour char4 = new GameCharacterFour(gm);
+                char4.setVisible(true);
             }
         });
         

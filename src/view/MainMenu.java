@@ -25,7 +25,7 @@ import model.GameModel;
 
 /**
  *
- * @author janes.thomas
+ * @author Janes Thomas
  */
 public class MainMenu extends JFrame implements ActionListener {
 
@@ -86,7 +86,7 @@ public class MainMenu extends JFrame implements ActionListener {
         //Listeners
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Game game = new Game();
+                Game game = new Game(gm);
                 game.setVisible(true);
             }
         });

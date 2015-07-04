@@ -17,12 +17,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import model.GameModel;
 
 /**
  *
@@ -30,6 +34,9 @@ import javax.swing.JTextPane;
  */
 public class GameCharacterOne extends JFrame {
 
+    //Classes
+    private GameModel gm;
+    
     //Images
     private static final String IMG_PATH = "src/images/charOne/charOne_happy.gif";
     private BufferedImage img;
@@ -46,12 +53,18 @@ public class GameCharacterOne extends JFrame {
     private JPanel gamePanel = new JPanel();
     private GridLayout gameLayout = new GridLayout(2, 1, 0, 0);
 
+    //Music
+    AudioInputStream audioInputStream;
+    Clip clip;
+    
     //div
     private int storyCounter = 0;   
     
-    public GameCharacterOne() {
+    public GameCharacterOne(GameModel gm) {
         super("In Game");
 
+        this.gm = gm;
+        
         setUpGame();
     }
 
@@ -60,6 +73,8 @@ public class GameCharacterOne extends JFrame {
         this.setLayout(gameLayout);
         this.setBounds(200, 200, 620, 760);
         this.setResizable(false);
+        
+        startBackGroundMusic();
 
         try {
             img = ImageIO.read(image);
@@ -88,6 +103,7 @@ public class GameCharacterOne extends JFrame {
                     weiterButton.setText("End");
                     storyCounter++;
                 } else {
+                    stopBackGroundMusic();
                     dispose();
                 }
             }
@@ -100,6 +116,24 @@ public class GameCharacterOne extends JFrame {
         this.add(imagePanel);
         this.add(gamePanel);
 
+    }
+
+    public void startBackGroundMusic() {
+        String soundName = "chapterTwo.wav";
+        if (gm.isSoundBoolean() == true) {
+            try {
+                audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void stopBackGroundMusic() {
+        clip.stop();
     }
 
 }
