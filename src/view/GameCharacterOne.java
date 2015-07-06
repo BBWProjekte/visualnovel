@@ -36,7 +36,7 @@ public class GameCharacterOne extends JFrame {
 
     //Classes
     private GameModel gm;
-    
+
     //Images
     private static final String IMG_PATH = "src/images/charOne/charOne_happy.gif";
     private BufferedImage img;
@@ -56,15 +56,15 @@ public class GameCharacterOne extends JFrame {
     //Music
     AudioInputStream audioInputStream;
     Clip clip;
-    
+
     //div
-    private int storyCounter = 0;   
-    
+    private int storyCounter = 0;
+
     public GameCharacterOne(GameModel gm) {
         super("In Game");
 
         this.gm = gm;
-        
+
         setUpGame();
     }
 
@@ -73,7 +73,7 @@ public class GameCharacterOne extends JFrame {
         this.setLayout(gameLayout);
         this.setBounds(200, 200, 620, 760);
         this.setResizable(false);
-        
+
         startBackGroundMusic();
 
         try {
@@ -103,7 +103,9 @@ public class GameCharacterOne extends JFrame {
                     weiterButton.setText("End");
                     storyCounter++;
                 } else {
-                    stopBackGroundMusic();
+                    if (gm.isSoundBoolean() == true) {
+                        stopBackGroundMusic();
+                    }
                     dispose();
                 }
             }

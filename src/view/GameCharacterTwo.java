@@ -70,6 +70,8 @@ public class GameCharacterTwo extends JFrame {
         this.setBounds(200, 200, 620, 760);
         this.setResizable(false);
 
+        startBackGroundMusic();
+
         try {
             img = ImageIO.read(image);
             icon = new ImageIcon(img);
@@ -95,7 +97,7 @@ public class GameCharacterTwo extends JFrame {
                     label.setIcon(icon);
                     ausgabeText.setText("<html>I really need some food now.</html>");
                     storyCounter++;
-                } else if(storyCounter == 1) {
+                } else if (storyCounter == 1) {
                     try {
                         img = ImageIO.read(new File("src/images/charTwo/charTwo_worried.png"));
                         icon = new ImageIcon(img);
@@ -107,8 +109,10 @@ public class GameCharacterTwo extends JFrame {
                     ausgabeText.setText("<html>I don't think I will survive this game much longer.</html>");
                     weiterButton.setText("End");
                     storyCounter++;
-                } 
-                else {
+                } else {
+                    if (gm.isSoundBoolean() == true) {
+                        stopBackGroundMusic();
+                    }
                     dispose();
                 }
             }
